@@ -4,15 +4,38 @@
 	<title>The Masters Tweets</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link href='https://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
 
-	 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-	<script type="text/javascript" src="js/scripts.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-route.min.js"></script>
 	<script type="text/javascript" src="js/tweetcontroller.js"></script>
 </head>
 <body ng-controller="tweetController">
-
-
-
+	<div class="container-fluid">
+		<div class="col-sm-12 banner">
+			The Masters Tweets
+		</div>
+	</div>
+	<div id="main-tweet-wrapper" class="container">
+		<div class="row">
+			<div class="col-sm-12" ng-repeat="tweet in data">
+				<div id="tweet-wrapper" class="col-sm-12">
+					<div id="text-wrapper" class="col-sm-12">
+						<div id="user-pic" class="col-sm-2">
+							<img class="col-sm-12" ng-src="{{tweet.user.profile_image_url}}">
+							<div class="col-sm-12" id="user-name">{{tweet.user.name}}</div>
+						</div>
+						<div class="col-sm-10">
+							{{tweet.text}} -- <span id="user-name">{{tweet.user.name}}</span>
+							<br>
+							<div id="seconds-wrapper"><span id="secs">{{tweet.sinceTweeted}}</span>  minutes ago.</div>
+						</div>
+					</div>
+					<img ng-src="{{tweet.user.profile_banner_url}}">
+				</div>
+			</div>			
+		</div>
+	</div>
 
 </body>
 </html>

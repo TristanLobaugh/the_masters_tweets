@@ -1,9 +1,53 @@
+body{
+	background: url("../an.jpg") no-repeat center center fixed;
+	background-size: cover;
+}
+#navbar{
 
 
+}
+.banner{
+	color: white;
+	font-size: 120px;
+	position: fixed;
+	text-align: center;
+	font-family: 'Courgette', cursive;
+}
+#main-tweet-wrapper{
+	margin-top: 200px;
+}
 
+#tweet-wrapper img{
+	width: 100%;
+	max-height: 310px;
+}
 
+#tweet-wrapper{
+ border: 5px solid black;
+ margin-bottom: 100px;
+ padding: 0;
+}
 
+#text-wrapper{
+	color: black;
+	padding: 10px;
+	font-size: 20px;
+	background-color: #cacaca
+}
 
+#user-name{
+	color: #4d4d4d;
+	font-size: 15px;
+	text-align: center;
+}
+
+#seconds-wrapper{
+	float: right;
+	margin-top: 30px;
+}
+#secs{
+	color: red;
+}
 
 
 
