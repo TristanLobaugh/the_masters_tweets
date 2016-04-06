@@ -5,26 +5,27 @@ tweetApp.config(function($routeProvider){
 		templateUrl: "pages/main.html",
 		controller: "tweetController"
 	});
-	$routeProvider.when("/#/player",{
+	$routeProvider.when("/player/:miscPlayer",{
 		templateUrl: "pages/player.html",
 		controller: "playerController"
 	});
-	$routeProvider.when("/#/search",{
+	$routeProvider.when("/search",{
 		templateUrl: "pages/search.html",
 		controller: "searchController"
+	});
+	$routeProvider.otherwise({
+		redirectTo: "/"		
 	});
 });
 
 tweetApp.controller("tweetController", function($scope, $http, $routeParams, $interval){
 	var url = "http://www.digitalcrafts.com/students/twitter/hashtag.php?hash=TheMasters&secondHash=AugustaNational";
 	$http.get(url).success(function(data){
-		console.log(data.statuses);
 		$scope.data = data.statuses;
 		for(var i = 0; i < $scope.data.length; i++){
 			var time = $scope.data[i].created_at;
 			var tweetTime = new Date(time);
 			$scope.data[i].tweetSeconds = tweetTime.getTime()/1000;
-			console.log(tweetTime);
 			$interval(function(){
 				for(var i = 0; i < $scope.data.length; i++){
 					var currentDate = new Date();
@@ -39,13 +40,11 @@ tweetApp.controller("tweetController", function($scope, $http, $routeParams, $in
 tweetApp.controller("playerController", function($scope, $http, $routeParams, $interval){
 	var url = "http://www.digitalcrafts.com/students/twitter/hashtag.php?hash=TheMasters&secondHash=" + playerChosen;
 	$http.get(url).success(function(data){
-		console.log(data.statuses);
 		$scope.data = data.statuses;
 		for(var i = 0; i < $scope.data.length; i++){
 			var time = $scope.data[i].created_at;
 			var tweetTime = new Date(time);
 			$scope.data[i].tweetSeconds = tweetTime.getTime()/1000;
-			console.log(tweetTime);
 			$interval(function(){
 				for(var i = 0; i < $scope.data.length; i++){
 					var currentDate = new Date();
@@ -60,13 +59,11 @@ tweetApp.controller("playerController", function($scope, $http, $routeParams, $i
 tweetApp.controller("searchController", function($scope, $http, $routeParams, $interval){
 	var url = "http://www.digitalcrafts.com/students/twitter/hashtag.php?hash=TheMasters&secondHash=" + searchField;
 	$http.get(url).success(function(data){
-		console.log(data.statuses);
 		$scope.data = data.statuses;
 		for(var i = 0; i < $scope.data.length; i++){
 			var time = $scope.data[i].created_at;
 			var tweetTime = new Date(time);
 			$scope.data[i].tweetSeconds = tweetTime.getTime()/1000;
-			console.log(tweetTime);
 			$interval(function(){
 				for(var i = 0; i < $scope.data.length; i++){
 					var currentDate = new Date();

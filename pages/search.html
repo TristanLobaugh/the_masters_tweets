@@ -1,21 +1,21 @@
 
-	<div id="main-tweet-wrapper" class="container">
-		<div class="row">
-			<div class="col-sm-12" ng-repeat="tweet in data">
-				<div id="tweet-wrapper" class="col-sm-12">
-					<div id="text-wrapper" class="col-sm-12">
-						<div id="user-pic" class="col-sm-2">
-							<img class="col-sm-12" ng-src="{{tweet.user.profile_image_url}}">
-							<div class="col-sm-12" id="user-name">{{tweet.user.name}}</div>
-						</div>
-						<div class="col-sm-10">
-							{{tweet.text}}
-							<br>
-							<div id="seconds-wrapper"><span id="secs">{{tweet.sinceTweeted}}</span>  minutes ago.</div>
-						</div>
+<div id="main-tweet-wrapper" class="container">
+	<div class="row">
+		<div class="col-sm-12" ng-repeat="tweet in data">
+			<div id="tweet-wrapper" class="col-sm-12">
+				<div id="text-wrapper" class="col-sm-12">
+					<div id="user-pic" class="col-sm-2">
+						<img class="col-sm-12" ng-src="{{tweet.user.profile_image_url}}">
+						<div class="col-sm-12" id="user-name">{{tweet.user.name}}</div>
 					</div>
-					<img ng-src="{{tweet.user.profile_banner_url}}">
+					<div class="col-sm-10">
+						{{tweet.text}}
+						<br>
+						<div id="seconds-wrapper"><span id="secs">{{tweet.sinceTweeted}}</span>  minutes ago.</div>
+					</div>
 				</div>
-			</div>			
-		</div>
+				<img ng-src="{{tweet.user.profile_banner_url}}">
+			</div>
+		</div>			
 	</div>
+</div>
