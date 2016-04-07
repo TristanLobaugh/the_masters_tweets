@@ -11,31 +11,31 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="js/controller.js"></script>
 </head>
-<body>
+<body ng-controller="mainController">
 
 		<nav class="navbar navbar-inverse navbar-fixed-top">	
 			<div class="col-sm-6 banner">
-				The Masters Tweets
+				{{header}}
 			</div>
 				<div class="col-sm-4 col-sm-offset-2 bannernav navbar-nav navbar-right">
 				<ul id="pages" class="col-sm-6 nav navbar-nav">
 			        <li class="main-list dropdown">
-			      		<a ng-href="#" class="dropdown-toggle" data-toggle="dropdown">Players <span class="caret"></span></a>
+			      		<a ng-click="changeHeader('The Masters Tweets')" ng-href="#" class="dropdown-toggle" data-toggle="dropdown">Players <span class="caret"></span></a>
 			      		<ul class="dropdown-menu">
-			      			 <li><a  ng-href="#/player/Jason Day">Jason Day</a></li>
-			      			 <li><a  ng-href="#/player/Jordan Spieth">Jordan Spieth</a></li>
-			      			 <li><a  ng-href="#/player/Rory McIlroy">Rory McIlroy</a></li>
-			      			 <li><a  ng-href="#/player/Bubba Watson">Bubba Watson</a></li>
-			      			 <li><a  ng-href="#/player/Phil Mickelson">Phil Mickelson</a></li>
+			      			 <li><a ng-click="changeHeader('Jason Day')" ng-href="#/player/JasonDay">Jason Day</a></li>
+			      			 <li><a ng-click="changeHeader('Jordan Spieth')" ng-href="#/player/JordanSpieth">Jordan Spieth</a></li>
+			      			 <li><a ng-click="changeHeader('Rory McIlroy')" ng-href="#/player/RoryMcIlroy">Rory McIlroy</a></li>
+			      			 <li><a ng-click="changeHeader('Bubba Watson')" ng-href="#/player/Bubba Watson">Bubba Watson</a></li>
+			      			 <li><a ng-click="changeHeader('Phil Mickelson')" ng-href="#/player/PhilMickelson">Phil Mickelson</a></li>
 			      		</ul>
 			        </li>
-			        <li class="main-list active"><a ng-href="#/">Home</a></li>
+			        <li class="main-list active"><a ng-click="changeHeader('The Masters Tweets')" ng-href="#/">Home</a></li>
 			    </ul>		
 				<div id="search" class="col-sm-6 nav navbar-nav">
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search for...">
+						<input type="text" class="form-control" placeholder="Search for..." ng-model="searchFor">
 						<span class="input-group-btn">
-						<button class="btn btn-default" type="button">Go!</button>
+							<button ng-click="goSearch()" class="btn btn-default" type="button">Go!</button>
 						</span>
 					</div>
 				</div>

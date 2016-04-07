@@ -7,19 +7,41 @@ tweetApp.config(function($routeProvider){
 	});
 	$routeProvider.when("/player/:miscPlayer",{
 		templateUrl: "pages/player.html",
-		controller: "playerController"
+		controller: "tweetController"
 	});
-	$routeProvider.when("/search",{
+	$routeProvider.when("/search/:searchField",{
 		templateUrl: "pages/search.html",
-		controller: "searchController"
+		controller: "tweetController"
 	});
 	$routeProvider.otherwise({
 		redirectTo: "/"		
 	});
 });
 
+tweetApp.controller("mainController", function($scope, $http, $routeParams, $interval, $location){
+	$scope.header = "The Masters Tweets"
+	$scope.changeHeader = function(name){
+		$scope.header = name;
+	}
+	$scope.goSearch = function(){
+		var loc="search/" + $scope.searchFor;
+		$scope.header = $scope.searchFor;
+		$location.path(loc);
+		$scope.searchFor = "";
+	}
+});
+
 tweetApp.controller("tweetController", function($scope, $http, $routeParams, $interval){
-	var url = "http://www.digitalcrafts.com/students/twitter/hashtag.php?hash=TheMasters&secondHash=AugustaNational";
+	var search = "AugustaNational";
+	if("miscPlayer" in $routeParams){
+		search = $routeParams.miscPlayer
+	}else if("searchField" in $routeParams){
+		search = $routeParams.searchField
+	}
+	else{
+		search = "AugustaNational";
+	}
+	var url = "http://www.digitalcrafts.com/students/twitter/hashtag.php?hash=TheMasters&secondHash=" + search;
 	$http.get(url).success(function(data){
 		$scope.data = data.statuses;
 		for(var i = 0; i < $scope.data.length; i++){
@@ -36,42 +58,3 @@ tweetApp.controller("tweetController", function($scope, $http, $routeParams, $in
 		}
 	});
 });
-
-tweetApp.controller("playerController", function($scope, $http, $routeParams, $interval){
-	var url = "http://www.digitalcrafts.com/students/twitter/hashtag.php?hash=TheMasters&secondHash=" + playerChosen;
-	$http.get(url).success(function(data){
-		$scope.data = data.statuses;
-		for(var i = 0; i < $scope.data.length; i++){
-			var time = $scope.data[i].created_at;
-			var tweetTime = new Date(time);
-			$scope.data[i].tweetSeconds = tweetTime.getTime()/1000;
-			$interval(function(){
-				for(var i = 0; i < $scope.data.length; i++){
-					var currentDate = new Date();
-					var currentTimeInSeconds = currentDate.getTime()/1000;
-					$scope.data[i].sinceTweeted = Math.floor((currentTimeInSeconds - $scope.data[i].tweetSeconds)/60);
-				};
-			}, 1000);
-		}
-	});
-});
-
-tweetApp.controller("searchController", function($scope, $http, $routeParams, $interval){
-	var url = "http://www.digitalcrafts.com/students/twitter/hashtag.php?hash=TheMasters&secondHash=" + searchField;
-	$http.get(url).success(function(data){
-		$scope.data = data.statuses;
-		for(var i = 0; i < $scope.data.length; i++){
-			var time = $scope.data[i].created_at;
-			var tweetTime = new Date(time);
-			$scope.data[i].tweetSeconds = tweetTime.getTime()/1000;
-			$interval(function(){
-				for(var i = 0; i < $scope.data.length; i++){
-					var currentDate = new Date();
-					var currentTimeInSeconds = currentDate.getTime()/1000;
-					$scope.data[i].sinceTweeted = Math.floor((currentTimeInSeconds - $scope.data[i].tweetSeconds)/60);
-				};
-			}, 1000);
-		}
-	});
-});
-
