@@ -1,36 +1,35 @@
 <!DOCTYPE html>
 <html ng-app="tweetApp">
-<head>
-	<title>The Masters Tweets</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="css/styles.css">
-	<link href='https://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-	<script type="text/javascript" src="js/angular-route.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="js/controller.js"></script>
-</head>
-<body ng-controller="mainController">
-
-		<nav class="navbar navbar-inverse navbar-fixed-top">	
+	<head>
+		<title>The Masters Tweets</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<link href='https://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+		<script type="text/javascript" src="js/angular-route.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="js/controller.js"></script>
+	</head>
+	<body ng-controller="mainController">
+		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="col-sm-6 banner">
 				{{header}}
 			</div>
-				<div class="col-sm-4 col-sm-offset-2 bannernav navbar-nav navbar-right">
+			<div class="col-sm-4 col-sm-offset-2 bannernav navbar-nav navbar-right">
 				<ul id="pages" class="col-sm-6 nav navbar-nav">
-			        <li class="main-list dropdown">
-			      		<a ng-click="changeHeader('The Masters Tweets')" ng-href="#" class="dropdown-toggle" data-toggle="dropdown">Players <span class="caret"></span></a>
-			      		<ul class="dropdown-menu">
-			      			 <li><a ng-click="changeHeader('Jason Day')" ng-href="#/player/JasonDay">Jason Day</a></li>
-			      			 <li><a ng-click="changeHeader('Jordan Spieth')" ng-href="#/player/JordanSpieth">Jordan Spieth</a></li>
-			      			 <li><a ng-click="changeHeader('Rory McIlroy')" ng-href="#/player/RoryMcIlroy">Rory McIlroy</a></li>
-			      			 <li><a ng-click="changeHeader('Bubba Watson')" ng-href="#/player/Bubba Watson">Bubba Watson</a></li>
-			      			 <li><a ng-click="changeHeader('Phil Mickelson')" ng-href="#/player/PhilMickelson">Phil Mickelson</a></li>
-			      		</ul>
-			        </li>
-			        <li class="main-list active"><a ng-click="changeHeader('The Masters Tweets')" ng-href="#/">Home</a></li>
-			    </ul>		
+					<li class="main-list dropdown">
+						<a ng-click="changeHeader('The Masters Tweets')" ng-href="#" class="dropdown-toggle" data-toggle="dropdown">Players <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a ng-click="changeHeader('Jason Day')" ng-href="#/player/JasonDay">Jason Day</a></li>
+							<li><a ng-click="changeHeader('Jordan Spieth')" ng-href="#/player/JordanSpieth">Jordan Spieth</a></li>
+							<li><a ng-click="changeHeader('Rory McIlroy')" ng-href="#/player/RoryMcIlroy">Rory McIlroy</a></li>
+							<li><a ng-click="changeHeader('Bubba Watson')" ng-href="#/player/Bubba Watson">Bubba Watson</a></li>
+							<li><a ng-click="changeHeader('Phil Mickelson')" ng-href="#/player/PhilMickelson">Phil Mickelson</a></li>
+						</ul>
+					</li>
+					<li class="main-list active"><a ng-click="changeHeader('The Masters Tweets')" ng-href="#/">Home</a></li>
+				</ul>
 				<div id="search" class="col-sm-6 nav navbar-nav">
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="Search for..." ng-model="searchFor">
@@ -39,13 +38,10 @@
 						</span>
 					</div>
 				</div>
-					
-		  		</div>
-		    
-
+				
+			</div>
+			
 		</nav>
-
 		<div ng-view></div>
-
-</body>
+	</body>
 </html>
